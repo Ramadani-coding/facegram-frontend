@@ -2,6 +2,7 @@ import axios from "axios";
 import NavbarHome from "../../components/NavbarHome";
 import { useState, useEffect } from "react";
 import Posts from "../../features/Posts";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [users, setUser] = useState([]);
@@ -43,16 +44,14 @@ const Home = () => {
                 Confirm
               </button>
             </div>
-            {/* Additional requests can go here */}
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="font-semibold text-lg mb-4">Explore People</h3>
-            {/* List of people to explore */}
             {users.length > 0 ? (
               <ul>
                 {users.map((user, index) => (
                   <li key={index} className="mb-2 border p-2 rounded-md">
-                    @{user.username}
+                    <Link to={`/users/${user.username}`}>@{user.username}</Link>
                   </li>
                 ))}
               </ul>
